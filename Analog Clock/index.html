@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <title>Clock</title>
+</head>
+
+<body>
+    <div class="clock">
+        <img src="./clock template.svg" alt="clock">
+
+        <div class="hour hand"></div>
+        <div class="minute hand"></div>
+        <div class="seconds hand"></div>
+    </div>
+
+    <script>
+        var hour = document.querySelector('.hour');
+        var minute = document.querySelector('.minute');
+        var seconds = document.querySelector('.seconds');
+
+        var setClock = setInterval(function clock() {
+            var dateNow = new Date();
+            var hr = dateNow.getHours();
+            var min = dateNow.getMinutes();
+            var sec = dateNow.getSeconds();
+
+            var calcHr = (hr * 30) + (min / 2);
+            var calcMin = (min * 6) + (sec / 10);
+            var calcSec = sec * 6;
+
+            hour.style.transform = `rotate(${calcHr}deg)`;
+
+            minute.style.transform = `rotate(${calcMin}deg)`;
+
+            seconds.style.transform = `rotate(${calcSec}deg)`;
+        }, 1000);
+    </script>
+</body>
+
+</html>
